@@ -6,9 +6,9 @@
  * main - Entry point
  *
  * This program will assign a random number to
- the variable n each time it is executed.
+   the variable n each time it is executed.
  * It will print whether the number stored in the
- variable n is positive or negative.
+   variable n is positive or negative.
  *
  * Return: Always 0 (Success)
  */
