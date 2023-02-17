@@ -10,11 +10,16 @@
 
 int main(void)
 {
-	char low;
-
-	for (low = 'a'; low <= 'z'; low++)
-		putchar(low);
-		putchar('\n');
-
-	return (0);
-}}
+  char c;
+  for (c =  'a'; c <= 'z'; c++)
+    {
+      putchar(c);
+    }
+  for (c = 'A'; C <= 'Z'; c++
+    {
+      putchar(c);
+    }
+	 putchar('\n');
+       return (0)
+	 
+}
