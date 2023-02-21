@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <ctype.h>
+#include "main.h"
+
+/**
+ * main - check the code.
+ *This file was intentionally left empty
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int r;
+
+    r = isalpha('H');
+    putchar(r + '0');
+    r = isalpha('o');
+    putchar(r + '0');
+    r = isalpha(108);
+    putchar(r + '0');
+    r = isalpha(';');
+    putchar(r + '0');
+    putchar('\n');
+    return (0);
+}
