@@ -1,3 +1,4 @@
+#include "holberton.h"
 #include "main.h"
 
 /**
@@ -15,17 +16,17 @@ int print_sign(int n)
 	if (n > 0)
 	{
 		sign = 1;
-		_putchar('+');
+		putchar('+');
 	}
 	else if (n < 0)
 	{
 		sign = -1;
-		_putchar('-');
+		putchar('-');
 	}
 	else
 	{
 		sign = 0;
-		_putchar('0');
+		putchar('0');
 	}
 
 	return (sign);
