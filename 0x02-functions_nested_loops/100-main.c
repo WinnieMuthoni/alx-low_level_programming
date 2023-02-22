@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * main - check the code for Holberton School students.
+ * main - check the code.
  *
  * Return: Always 0.
  */
+void print_times_table(int n);
 int main(void)
 {
     print_times_table(3);
@@ -14,12 +15,5 @@ int main(void)
     print_times_table(98);
     _putchar('\n');
     print_times_table(12);  
-   _putchar('\n');
-    print_times_table(15);
-	_putchar('\n');
-    print_times_table(16);
-	_putchar('\n');
-    print_times_table(0);
-	_putchar('\n');
-	 return (0);
+    return (0);
 }
