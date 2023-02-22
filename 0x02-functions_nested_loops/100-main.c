@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -5,10 +6,10 @@
  *
  * Return: Always 0.
  */
-
+void print_times_tables(int n)
 int main(void)
 {
-    times_table(3);
+    print_times_table(3);
     _putchar('\n');
     print_times_table(5);
     _putchar('\n');
