@@ -5,7 +5,13 @@
  *
  * Return: Always 0.
  */
-void print_times_table(int n);
+void print_times_table(int n) {
+    for (int i = 1; i <= 10; i++) {
+        int product = n * i;
+        printf("%d x %d = %d\n", n, i, product);
+    }
+}
+
 int main(void)
 {
     print_times_table(3);
