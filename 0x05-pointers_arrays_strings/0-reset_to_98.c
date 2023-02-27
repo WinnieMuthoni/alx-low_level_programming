@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "main.h"
-void main()
+
 void reset_to_98(int *n)
 {
 
