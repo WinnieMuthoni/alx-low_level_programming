@@ -1,4 +1,4 @@
-#nclude <stdio.h>
+#include <stdio.h>
 #include "main.h"
 /**
  * _strpbrk - locates the first occurrence in s of any of the bytes of accept
