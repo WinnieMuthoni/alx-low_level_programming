@@ -1,7 +1,4 @@
 #!/bin/bash
-gcc -c *.c
-ar -rc libmy.a *o
-ranlib libmy.a
 1utchar(char c);
 int _islower(int c);
 int _isalpha(int c);
