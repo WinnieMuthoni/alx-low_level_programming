@@ -1,9 +1,6 @@
 #include "main.h"
 
-//print_binary-decimal to binary without use
-//@n: the decimal
-//Description: convert decimal to binary
-//Return: no return
+
 
 void print_binary(unsigned long int n)
 
@@ -22,7 +19,7 @@ void print_binary(unsigned long int n)
       if((n & numeral) == 0 && num == 1)
         _putchar('0');
 
-      if(n & num) != 0)
+      if((n & num) != 0)
       {
         _putchar('1');
         num = 1;
@@ -31,4 +28,5 @@ void print_binary(unsigned long int n)
       numeral = numeral >> 1;
 
     }
+}
 
