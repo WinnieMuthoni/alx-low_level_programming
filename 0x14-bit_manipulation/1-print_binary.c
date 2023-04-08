@@ -1,18 +1,34 @@
 #include "main.h"
-#include <stdio.h>
+
+//print_binary-decimal to binary without use
+//@n: the decimal
+//Description: convert decimal to binary
+//Return: no return
 
 void print_binary(unsigned long int n)
+
 {
-  int i, bit;
-  for (i = (sizeof(unsigned long int) * 8) - 1; i>=0; i--)
+  int num = 0;
+  unsigned long int numeral = 1;
+
+
+  num <<= 63;
+  if(n == 0)
+    _putchar('0');
+
+
+  while(numeral > 0)
     {
-      bit = (n >> i) & 1;
-      printf("%d",bit);
+      if((n & numeral) == 0 && num == 1)
+        _putchar('0');
+
+      if(n & num) != 0)
+      {
+        _putchar('1');
+        num = 1;
+      }
+
+      numeral = numeral >> 1;
+
     }
-}
-int main()
-{
-  unsigned long int n = 42;
-  print_binary(n);
-  return o;
-}
+
