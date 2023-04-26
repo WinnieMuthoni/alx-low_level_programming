@@ -32,7 +32,7 @@ void magic(unsigned char *e_ident)
 	int end;
 
         end = EI_NIDENT - 1;
-	printf(" Magic:   ");
+	printf("Magic:");
 	for (i = 0; i < end; i++)
 		printf("%02x ", *(e_ident + i));
 	printf("%02x\n", *(e_ident + i));
@@ -44,7 +44,7 @@ void magic(unsigned char *e_ident)
  */
 void class(unsigned char *e_ident)
 {
-	printf("  Class:   ");
+	printf("Class:");
 	if (e_ident[EI_CLASS] == ELFCLASSNONE)
 		printf("The class is invalid\n");
 	else if (e_ident[EI_CLASS] == ELFCLASS32)
@@ -61,7 +61,7 @@ void class(unsigned char *e_ident)
  */
 void data(unsigned char *e_ident)
 {
-	printf(" Data:     ");
+	printf("Data:");
 	if (e_ident[EI_DATA] == ELFDATANONE)
 		printf("Unknown data format\n");
 	else if (e_ident[EI_DATA] == ELFDATA2LSB)
@@ -78,7 +78,7 @@ void data(unsigned char *e_ident)
  */
 void version(unsigned char *e_ident)
 {
-	printf(" Version:     ");
+	printf("Version:");
 	if (e_ident[EI_VERSION] == EV_CURRENT)
 		printf("%i (current)\n", EV_CURRENT);
 	else
@@ -92,7 +92,7 @@ void version(unsigned char *e_ident)
  */
 void osabi(unsigned char *e_ident)
 {
-	printf(" OS/ABI:    ");
+	printf("OS/ABI:");
 	if (e_ident[EI_OSABI] == ELFOSABI_SYSV)
 		printf("UNIX - System V\n");
 	else if (e_ident[EI_OSABI] == ELFOSABI_HPUX)
@@ -127,7 +127,7 @@ void type(unsigned int e_type, unsigned char *e_ident)
 {
 	e_ident[EI_DATA] == ELFDATA2MSB ? e_type = e_type >> 8 : e_type;
 
-	printf(" Type:     ");
+	printf("Type:");
 	if (e_type == ET_NONE)
 		printf("NONE (Unknown type)\n");
 	else if (e_type == ET_REL)
@@ -153,7 +153,7 @@ void entry(unsigned int e_entry, unsigned char *e_ident)
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_entry = REV(e_entry);
 
-	printf(" Entry point address:      ");
+	printf("Entry point address:");
 	printf("%#x\n", (unsigned int)e_entry);
 }
 
@@ -193,7 +193,7 @@ int main(int argc, char *argv[])
 	data(file->e_ident);
 	version(file->e_ident);
 	osabi(file->e_ident);
-	printf("  ABI Version:       ");
+	printf("ABI Version:");
 	printf("%i\n", file->e_ident[EI_ABIVERSION]);
 	type(file->e_type, file->e_ident);
 	entry(file->e_entry, file->e_ident);
