@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- *return one bit
+ *get_bit - return one bit
  *@index: the position to read the bit
  *@n: the bit number
- *Description: the position to read the bit
+ *Description: return 1 bit
  *Retun: the value of the bit
  */
 
