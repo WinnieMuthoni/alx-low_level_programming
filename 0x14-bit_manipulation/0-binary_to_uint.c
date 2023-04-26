@@ -1,36 +1,30 @@
 #include "main.h"
 /**
- * binary_to_uint - convert binary to decimal.
- * @b: the binary number in string format
- * Description: convert binary to decimal
- * section header: the header of this function is header.h
- * Return: this return the convert number.
+ * print_binary - decimal to binary without use / %
+ * @n: the decimal
+ * Description: convert decimal to binary
+ * section header: the header of this function is main.h
+ * Return: no return
  */
-
-unsigned int binary_to_uint(const char *b)
+void print_binary(unsigned long int n)
 {
-	unsigned int finalresult, basenumber;
-	int j;
+	int flag = 0;
+	unsigned long int mask = 1;
 
-	finalresult = 0;
-	j = 0;
-	basenumber = 1;
+	mask <<= 63;
+	if (n == 0)
+		_putchar('0');
 
-	if (!b)
-		return (0);
-
-	while (*(b + j))
+	while (mask > 0)
 	{
-		if (*(b + j) != '0' && *(b + i) != '1')
-			return (0);
-		j++;
-	}
-	for (j--; j >= 0; j--)
-	{
-		if (*(b + j) == '1')
-			finalresult = finalresult + basenumber;
-		basenumber = basenumber * 2;
-	}
+		if ((n & mask) == 0 && flag == 1)
+			_putchar('0');
+		if ((n & mask) != 0)
+		{
+			_putchar('1');
+			flag = 1;
+		}
 
-	return (result);
+		mask = mask >> 1;
+	}
 }
