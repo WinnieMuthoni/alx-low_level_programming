@@ -5,6 +5,7 @@
  * @n: the number
  * @index: the position to set bit
  * Description: set 1 bit to 0
+ * section header: the header of this function is main.h
  * Return: 1 in success -1 in fail
  */
 int clear_bit(unsigned long int *n, unsigned int index)
