@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- *get_bit - return one bit
- *@index: the position to read the bit
- *@n: the bit number
- *Description: return 1 bit
- *Retun: the value of the bit
+ * get_bit - return one bit
+ * @n: the number
+ * @index: the position to read the bit
+ * Description: return 1 bit
+ * section header: the header of this function is holberton.h
+ * Return: the value of the bit
  */
 
 int get_bit(unsigned long int n, unsigned int index)
