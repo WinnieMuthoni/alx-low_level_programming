@@ -12,11 +12,11 @@ void verify(unsigned char *e_ident)
 	if (*(e_ident) == 0x7f && *(e_ident + 1) == 'E' &&
 	    *(e_ident + 2) == 'L' && *(e_ident + 3) == 'F')
 	{
-		printf("ELF header:\n");
+		printf("ELF Header:\n");
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "Error: the file is not a valid ELF\n");
+		dprintf(STDERR_FILENO, "Error: this file not is a valid ELF\n");
 		exit(98);
 	}
 }
@@ -28,12 +28,12 @@ void verify(unsigned char *e_ident)
  */
 void magic(unsigned char *e_ident)
 {
-	int i; 
-	int end;
+	int i; /* the index to count the magic bytes */
+	int limit;
 
-        end = EI_NIDENT - 1;
-	printf("Magic:");
-	for (i = 0; i < end; i++)
+	limit = EI_NIDENT - 1;
+	printf("  Magic:   ");
+	for (i = 0; i < limit; i++)
 		printf("%02x ", *(e_ident + i));
 	printf("%02x\n", *(e_ident + i));
 }
@@ -44,9 +44,9 @@ void magic(unsigned char *e_ident)
  */
 void class(unsigned char *e_ident)
 {
-	printf("Class:");
+	printf("  Class:                             ");
 	if (e_ident[EI_CLASS] == ELFCLASSNONE)
-		printf("The class is invalid\n");
+		printf("This class is invalid\n");
 	else if (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("ELF32\n");
 	else if (e_ident[EI_CLASS] == ELFCLASS64)
@@ -61,7 +61,7 @@ void class(unsigned char *e_ident)
  */
 void data(unsigned char *e_ident)
 {
-	printf("Data:");
+	printf("  Data:                              ");
 	if (e_ident[EI_DATA] == ELFDATANONE)
 		printf("Unknown data format\n");
 	else if (e_ident[EI_DATA] == ELFDATA2LSB)
@@ -78,7 +78,7 @@ void data(unsigned char *e_ident)
  */
 void version(unsigned char *e_ident)
 {
-	printf("Version:");
+	printf("  Version:                           ");
 	if (e_ident[EI_VERSION] == EV_CURRENT)
 		printf("%i (current)\n", EV_CURRENT);
 	else
@@ -92,7 +92,7 @@ void version(unsigned char *e_ident)
  */
 void osabi(unsigned char *e_ident)
 {
-	printf("OS/ABI:");
+	printf("  OS/ABI:                            ");
 	if (e_ident[EI_OSABI] == ELFOSABI_SYSV)
 		printf("UNIX - System V\n");
 	else if (e_ident[EI_OSABI] == ELFOSABI_HPUX)
@@ -127,7 +127,7 @@ void type(unsigned int e_type, unsigned char *e_ident)
 {
 	e_ident[EI_DATA] == ELFDATA2MSB ? e_type = e_type >> 8 : e_type;
 
-	printf("Type:");
+	printf("  Type:                              ");
 	if (e_type == ET_NONE)
 		printf("NONE (Unknown type)\n");
 	else if (e_type == ET_REL)
@@ -153,7 +153,7 @@ void entry(unsigned int e_entry, unsigned char *e_ident)
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_entry = REV(e_entry);
 
-	printf("Entry point address:");
+	printf("  Entry point address:               ");
 	printf("%#x\n", (unsigned int)e_entry);
 }
 
@@ -166,25 +166,25 @@ void entry(unsigned int e_entry, unsigned char *e_ident)
  */
 int main(int argc, char *argv[])
 {
-	int f, _read, _close;
+	int fd, _read, _close;
 	Elf64_Ehdr *file;
 
 	if (argc > 2 || argc < 2)
-		dprintf(STDERR_FILENO, "Usage: error in number of args\n"), exit(98);
+		dprintf(STDERR_FILENO, "Usage: error in # of args\n"), exit(98);
 	file = malloc(sizeof(Elf64_Ehdr));
 	if (file == NULL)
-		dprintf(STDERR_FILENO, "error in allocating memory\n"), exit(98);
-	f = open(*(argv + 1), O_RDONLY);
-	if (f == -1)
+		dprintf(STDERR_FILENO, "error in allocate memory\n"), exit(98);
+	fd = open(*(argv + 1), O_RDONLY);
+	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Cannot read from file %s\n", *(argv + 1));
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", *(argv + 1));
 		exit(98);
 	}
-	_read = read(f, file, sizeof(Elf64_Ehdr));
+	_read = read(fd, file, sizeof(Elf64_Ehdr));
 	if (_read == -1)
 	{
 		free(file);
-		dprintf(STDERR_FILENO, "Error: Cannot read from file %s\n", *(argv + 1));
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", *(argv + 1));
 		exit(98);
 	}
 	verify(file->e_ident);
@@ -193,15 +193,15 @@ int main(int argc, char *argv[])
 	data(file->e_ident);
 	version(file->e_ident);
 	osabi(file->e_ident);
-	printf("ABI Version:");
+	printf("  ABI Version:                       ");
 	printf("%i\n", file->e_ident[EI_ABIVERSION]);
 	type(file->e_type, file->e_ident);
 	entry(file->e_entry, file->e_ident);
 	free(file);
-	_close = close(f);
+	_close = close(fd);
 	if (_close)
 	{
-		dprintf(STDERR_FILENO, "Error: Cannot close fd\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd\n");
 		exit(98);
 	}
 	return (0);
