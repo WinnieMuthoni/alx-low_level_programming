@@ -21,7 +21,7 @@ void print_binary(unsigned long int n)
 		if ((n & dec) != 0)
 		{
 			_putchar('1');
-			fnum = 1;
+			num = 1;
 		}
 		dec = dec >> 1;
 	}
