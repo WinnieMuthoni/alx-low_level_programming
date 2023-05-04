@@ -10,7 +10,7 @@ void print_binary(unsigned long int n)
 {
 	int num = 0;
 	unsigned long int dec = 1;
-	
+
 	dec <<= 63;
 	if (n == 0)
 		_putchar('0');
